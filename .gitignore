@@ -1,0 +1,6 @@
+build/
+
+# Private working notes
+.claude/
+.devnotes/
+CLAUDE.md
