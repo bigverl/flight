@@ -1,0 +1,16 @@
+default_install_hook_types: [pre-push]
+default_stages: [pre-push]
+repos:
+  - repo: local
+    hooks:
+      - id: clang-format
+        name: clang-format
+        entry: clang-format -i
+        language: unsupported
+        types_or: [c++]
+      - id: build-and-test
+        name: build and test
+        entry: cmake --workflow --preset host-debug
+        language: unsupported
+        pass_filenames: false
+        always_run: true
