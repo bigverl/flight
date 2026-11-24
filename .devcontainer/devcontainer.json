@@ -1,0 +1,13 @@
+{
+  "name": "flight",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "ubuntu",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode.cpptools", "ms-vscode.cmake-tools"]
+    }
+  },
+  "postCreateCommand": "pre-commit install"
+}
