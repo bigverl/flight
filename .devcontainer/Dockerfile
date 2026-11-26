@@ -21,6 +21,12 @@ RUN apt-get update \
         qemu-system-arm \
     && rm -rf /var/lib/apt/lists/*
 
+# Syft is not in Ubuntu's archive, so it comes from Anchore's release package, pinned by SHA-256.
+ADD --checksum=sha256:81f3914b9ca3f39cafcf3eb1bdc9f7b7049705fabc0ba42c3b18e07a11de2962 \
+    https://github.com/anchore/syft/releases/download/v1.57.1/syft_1.57.1_linux_amd64.deb \
+    /tmp/syft.deb
+RUN dpkg --install /tmp/syft.deb && rm /tmp/syft.deb
+
 USER ubuntu
 
 RUN mkdir -p /home/ubuntu/.claude
