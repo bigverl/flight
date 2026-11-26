@@ -3,14 +3,24 @@ default_stages: [pre-push]
 repos:
   - repo: local
     hooks:
+
       - id: clang-format
         name: clang-format
-        entry: clang-format -i
+        entry: make format
         language: unsupported
         types_or: [c++]
+        pass_filenames: false
+
+      - id: static-analysis
+        name: static analysis
+        entry: make analyze
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
       - id: build-and-test
         name: build and test
-        entry: cmake --workflow --preset host-debug
+        entry: make test
         language: unsupported
         pass_filenames: false
         always_run: true

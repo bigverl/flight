@@ -5,11 +5,20 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
         clang-format \
+        clang-tidy \
         cmake \
+        cppcheck \
         g++ \
+        gcc-arm-none-eabi \
+        gcovr \
+        gdb-multiarch \
         git \
+        libnewlib-arm-none-eabi \
+        libstdc++-arm-none-eabi-newlib \
         ninja-build \
         pre-commit \
+        python3-venv \
+        qemu-system-arm \
     && rm -rf /var/lib/apt/lists/*
 
 USER ubuntu

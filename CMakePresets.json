@@ -10,12 +10,25 @@
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_CXX_COMPILER": "g++"
       }
+    },
+    {
+      "name": "host-analysis",
+      "displayName": "Host debug build with clang-tidy and cppcheck",
+      "inherits": "host-debug",
+      "binaryDir": "${sourceDir}/build/host-analysis",
+      "cacheVariables": {
+        "FLIGHT_STATIC_ANALYSIS": "ON"
+      }
     }
   ],
   "buildPresets": [
     {
       "name": "host-debug",
       "configurePreset": "host-debug"
+    },
+    {
+      "name": "host-analysis",
+      "configurePreset": "host-analysis"
     }
   ],
   "testPresets": [
@@ -35,6 +48,14 @@
         { "type": "build", "name": "host-debug" },
         { "type": "test", "name": "host-debug" }
       ]
+    },
+    {
+      "name": "host-analysis",
+      "steps": [
+        { "type": "configure", "name": "host-analysis" },
+        { "type": "build", "name": "host-analysis" }
+      ]
     }
   ]
 }
+
