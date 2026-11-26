@@ -16,7 +16,7 @@ env:
 
 jobs:
   # Build dev container image
-  build-image:
+  build-ci-container-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,7 +39,7 @@ jobs:
           runCmd: "true"
 
   static-analysis:
-    needs: build-image
+    needs: build-ci-container-image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -61,7 +61,7 @@ jobs:
           runCmd: make analyze
 
   unit-tests:
-    needs: image
+    needs: build-ci-container-image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
