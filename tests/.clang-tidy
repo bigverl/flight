@@ -1,0 +1,7 @@
+---
+InheritParentConfig: true
+Checks: >
+  -cppcoreguidelines-*,
+  -hicpp-*,
+  -misc-no-recursion,
+  -readability-function-size

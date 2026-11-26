@@ -1,7 +1,13 @@
 ---
-InheritParentConfig: true
 Checks: >
-  -cppcoreguidelines-*,
-  -hicpp-*,
-  -misc-no-recursion,
-  -readability-function-size
+  -*,
+  bugprone-unused-return-value,
+  cert-*,
+  cppcoreguidelines-*,
+  hicpp-*,
+  misc-no-recursion,
+  readability-function-size
+CheckOptions:
+  readability-function-size.LineThreshold: 60
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'

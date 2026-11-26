@@ -3,9 +3,6 @@ name: ci
 on:
   pull_request:
     branches: [main]
-  # TEMPORARY: runs CI on pushes to this branch for testing. Remove before merging to main.
-  push:
-    branches: [v0.2.0-ci]
 
 permissions:
   contents: read
