@@ -5,9 +5,18 @@
     "cacheFrom": "ghcr.io/bigverl/flight-devcontainer:buildcache"
   },
   "remoteUser": "ubuntu",
+  "mounts": [
+    "source=claude-code-config-${devcontainerId},target=/home/ubuntu/.claude,type=volume"
+  ],
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/ubuntu/.claude"
+  },
   "customizations": {
     "vscode": {
-      "extensions": ["ms-vscode.cpptools", "ms-vscode.cmake-tools"]
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools"
+      ]
     }
   },
   "postCreateCommand": "pre-commit install"
