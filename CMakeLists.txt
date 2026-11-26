@@ -34,5 +34,20 @@ add_executable(flight_tests
 target_link_libraries(flight_tests PRIVATE GTest::gtest_main)
 target_compile_options(flight_tests PRIVATE ${FLIGHT_WARNINGS})
 
+# Static analysis runs clang-tidy and cppcheck on every project source file as it compiles.
+option(FLIGHT_STATIC_ANALYSIS "Run clang-tidy and cppcheck on the project's targets" OFF)
+if(FLIGHT_STATIC_ANALYSIS)
+    find_program(CLANG_TIDY_EXE NAMES clang-tidy REQUIRED)
+    find_program(CPPCHECK_EXE NAMES cppcheck REQUIRED)
+    set(FLIGHT_CPPCHECK
+        ${CPPCHECK_EXE}
+        --enable=warning,performance,portability
+        --error-exitcode=1
+        --inline-suppr)
+    set_target_properties(flight_tests PROPERTIES
+        CXX_CLANG_TIDY ${CLANG_TIDY_EXE}
+        CXX_CPPCHECK "${FLIGHT_CPPCHECK}")
+endif()
+
 include(GoogleTest)
 gtest_discover_tests(flight_tests)
