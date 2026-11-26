@@ -10,9 +10,9 @@ RUN apt-get update \
         cppcheck \
         g++ \
         gcc-arm-none-eabi \
-        gcovr \
         gdb-multiarch \
         git \
+        lcov \
         libnewlib-arm-none-eabi \
         libstdc++-arm-none-eabi-newlib \
         ninja-build \

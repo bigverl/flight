@@ -1,7 +1,8 @@
 {
   "name": "flight",
   "build": {
-    "dockerfile": "Dockerfile"
+    "dockerfile": "Dockerfile",
+    "cacheFrom": "ghcr.io/bigverl/flight-devcontainer:buildcache"
   },
   "remoteUser": "ubuntu",
   "customizations": {
